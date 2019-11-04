@@ -1,0 +1,35 @@
+ul {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    li{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 5px;
+        white-space: nowrap;
+        a{
+            text-decoration: none;
+            &:visited, &:active, &:link{
+                text-decoration: none;
+            }
+        }
+        span {
+            height: 2px;
+            width: 2rem;
+            margin-top: 2px;
+        }
+        .indicator {
+            background: red;
+        }
+        .unselected{
+            background-color: rgba(0, 0, 0, 0);
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

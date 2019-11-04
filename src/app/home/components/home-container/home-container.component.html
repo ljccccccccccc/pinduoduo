@@ -1,0 +1,13 @@
+<app-scrollable-tab 
+    [menus]='topMenus' 
+    (tabSelected)='handleTabSelected($event)'
+    [menuBackgroundColor]="'white'"
+    [tabColor]="'gray'"
+    [tabActiveColor]="'red'"
+    [indicatorColor]="'red'"
+    [selectedTabLink]="selectedTabLink$ | async"
+>
+</app-scrollable-tab>
+<div class="main">
+    <router-outlet></router-outlet>
+</div>

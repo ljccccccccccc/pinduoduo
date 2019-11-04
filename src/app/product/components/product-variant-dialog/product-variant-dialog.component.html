@@ -1,0 +1,28 @@
+<app-dialog>
+    <div class="image-container">
+        <img class="product-image" [src]="selectedVariantImage">
+        <div class="price">
+            <span>&yen; {{price}}</span>
+            <img class="close-button" src="assets/icons/close.png" appCloseDialog>
+        </div>
+        <div class="selected-desc">已选择：{{selectedVariantName}}</div>
+    </div>
+    <div class="content">
+        <div>套餐</div>
+        <div class="variant" 
+            *ngFor="let variant of variants;let idx = index"
+            [ngClass]="{'variant-selected': idx === selectedVariantIndex}"
+            (click)="handleSelection(idx)"
+        ></div>
+        <div class="amount-div">
+            <span>数量:</span>
+            <app-product-amount (amountChange)="handleAmountChange($event)"></app-product-amount>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="confirm-button"
+            (click)="handleConfirm()"
+            [ngStyle]="{'background-color': count > 0 && selectedVariantIndex >= 0 ? 'red' : 'darkgray'}"
+        >确定</button>
+    </div>
+</app-dialog>

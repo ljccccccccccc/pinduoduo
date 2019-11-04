@@ -1,0 +1,17 @@
+<ul [ngStyle]="{'background-color': menuBackgroundColor}">
+    <li *ngFor='let menu of menus;let i = index;'>
+        <a 
+            (click)='handleSelected(i)'
+            [ngStyle]="{'color': selectedIndex === i ? tabActiveColor : tabColor }"
+        >{{ menu.title }}</a>
+        <span 
+           class="indicator" 
+           *ngIf="menu.link === selectedTabLink else unSeleted"
+           [ngStyle]="{'background-color': indicatorColor}"
+        ></span>
+        <ng-template #unSeleted>
+            <span class="unselected"></span>
+        </ng-template>
+        
+    </li>
+</ul>

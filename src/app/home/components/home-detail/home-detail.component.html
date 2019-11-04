@@ -1,0 +1,21 @@
+<ng-container *ngIf="(selectedTabLink$ | async) as tab$">
+    <!-- 这里有个技巧  ngif里面的这个observable对象可以定义成tab变量，在后面引用 -->
+    <ng-container *ngIf="tab$ === 'hot'">
+        <app-image-slider [sliders]="imageSliders$ | async "></app-image-slider>
+        <app-horizontal-grid>
+            <div appGridItem *ngFor="let item of channels$ | async" [display]="'grid'">
+                <img [src]="item.icon" alt="" appGridItemImage [fixMode]="'none'" [appGridItemImage]="'2rem'">
+                <span [appGridItemTitle]="'0.6rem'">{{ item.title }}</span>
+            </div>
+        </app-horizontal-grid>
+    </ng-container>
+</ng-container>
+<div class="ad-container" *ngIf="ad$ | async as ad">
+    <img class="ad-image" [src]="ad.imageUrl" alt="">
+</div>
+<app-vertical-grid [itemWidth]="'20rem'">
+    <app-product-card 
+    *ngFor="let product of products$ | async" 
+    [product]="product"
+    [routerLink]="['/products',product.id]"></app-product-card>
+</app-vertical-grid>
